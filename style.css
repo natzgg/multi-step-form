@@ -26,9 +26,17 @@ p {
   font-size: 16px;
 }
 
-.card {
+main {
+  background: url(./assets/images/bg-sidebar-mobile.svg), var(--Magnolia);
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 100vh;
   width: 100vw;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-container {
@@ -39,16 +47,29 @@ p {
 }
 
 .steps-container {
-  background: url(./assets/images/bg-sidebar-mobile.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+  align-self: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .step {
-  height: 4rem;
-  width: 4rem;
-  background: red;
+  height: 2.2rem;
+  width: 2.2rem;
+  background: none;
   border-radius: 50%;
+  border: 1.4px var(--White) solid;
+  color: var(--White);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.info-container {
+  margin: 0.5rem 1rem;
+  background: var(--White);
+  border-radius: 10px;
 }
