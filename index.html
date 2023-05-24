@@ -16,7 +16,7 @@
             <div class="step step-four">4</div>
           </div>
           <div class="info-container">
-            <div class="personal-info page-one page hide">
+            <div class="personal-info page-one page">
               <div class="personal-info-text-container text-container">
                 <h2 class="personal-info-text-title title">Personal info</h2>
                 <h3 class="personal-info-text info-text">
@@ -30,6 +30,7 @@
                     type="text"
                     name="name"
                     placeholder="e.g. Stephen King"
+                    class="personal-name"
                   />
                 </div>
 
@@ -41,7 +42,11 @@
                     type="text"
                     name="email"
                     placeholder="e.g. stephenking@lorem.com"
+                    class="personal-email"
                   />
+                  <span class="email-error error">
+                    Please input a valid email
+                  </span>
                 </div>
 
                 <div class="row">
@@ -52,7 +57,9 @@
                     type="text"
                     name="phone"
                     placeholder="e.g. +1 234 567 890"
+                    class="personal-phone"
                   />
+                  <span class="phone-error error"> Must be 11 digits</span>
                 </div>
               </div>
             </div>
@@ -159,20 +166,41 @@
                 <div class="add-ons-price">+$2/mo</div>
               </div>
             </div>
-            <div class="finish page-four page">
+            <div class="finish page-four page hide">
               <div class="finish-text-container text-container">
                 <h2 class="finish-title title">Finishing Up</h2>
                 <h3 class="finish-text info-text">
                   Double-check everything looks OK before confirming.
                 </h3>
               </div>
-              <div class="order-summary">TEST</div>
-              <div class="order-total">TOTAL</div>
+              <div class="order-summary">
+                <div class="order-plan">
+                  <div class="chosen-plan">
+                    <div class="chosen-plan-text">Arcade</div>
+                    <a href="">Change</a>
+                  </div>
+                  <div class="order-plan-price">$9/mo</div>
+                </div>
+                <div class="order-add-ons">
+                  <div class="add-ons-item">
+                    <div class="name">Online service</div>
+                    <div class="price">+$1/mo</div>
+                  </div>
+                  <div class="add-ons-item">
+                    <div class="name">Online service</div>
+                    <div class="price">+$1/mo</div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-total">
+                <div class="order-total-text">Total</div>
+                <div class="order-total-price">$12/mo</div>
+              </div>
             </div>
           </div>
 
           <div class="next-step-btn-container">
-            <button class="go-back">Go Back</button>
+            <button class="go-back hide">Go Back</button>
             <button class="next-step">Next Step</button>
           </div>
         </div>
