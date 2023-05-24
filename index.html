@@ -10,31 +10,161 @@
       <div class="card">
         <div class="card-container">
           <div class="steps-container">
-            <div class="step step-one">1</div>
+            <div class="step step-one step-active">1</div>
             <div class="step step-two">2</div>
             <div class="step step-three">3</div>
             <div class="step step-four">4</div>
           </div>
           <div class="info-container">
-            <div class="personal-info">
-              <div class="personal-info-text-container">
-                <h1 class="personal-info-text">Personal Info</h1>
-                <h2 class="personal-info-text">
+            <div class="personal-info page-one page hide">
+              <div class="personal-info-text-container text-container">
+                <h2 class="personal-info-text-title title">Personal info</h2>
+                <h3 class="personal-info-text info-text">
                   Please provide your name, email address, and phone number.
-                </h2>
+                </h3>
               </div>
               <div class="personal-info-details-container">
-                <label for="name" class="personal-info-name">Name</label>
-                <input type="text" name="name" />
-                <label for="email" class="personal-info-email">Email</label>
-                <input type="text" name="email" />
-                <label for="phone" class="personal-info-phone">Email</label>
-                <input type="text" name="phone" />
+                <div class="row">
+                  <label for="name" class="personal-info-name">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="e.g. Stephen King"
+                  />
+                </div>
+
+                <div class="row">
+                  <label for="email" class="personal-info-email">
+                    Email Address
+                  </label>
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="e.g. stephenking@lorem.com"
+                  />
+                </div>
+
+                <div class="row">
+                  <label for="phone" class="personal-info-phone">
+                    Phone Number
+                  </label>
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="e.g. +1 234 567 890"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="plan page-two page hide">
+              <div class="plan-text-container text-container">
+                <h2 class="plan-title title">Select your plan</h2>
+                <h3 class="plan-text info-text">
+                  You have the option of monthly or yearly billing.
+                </h3>
+              </div>
+              <div class="plan-list active">
+                <div class="plan-icon">
+                  <img src="./assets/images/icon-arcade.svg" alt="" />
+                </div>
+                <div class="plan-details">
+                  <div class="plan-name">Arcade</div>
+                  <div class="plan-price">$9/mo</div>
+                  <div class="promo hide">2 months free</div>
+                </div>
+              </div>
+
+              <div class="plan-list">
+                <div class="plan-icon">
+                  <img src="./assets/images/icon-advanced.svg" alt="" />
+                </div>
+                <div class="plan-details">
+                  <div class="plan-name">Advanced</div>
+                  <div class="plan-price">$12/mo</div>
+                  <div class="promo hide">2 months free</div>
+                </div>
+              </div>
+
+              <div class="plan-list">
+                <div class="plan-icon">
+                  <img src="./assets/images/icon-pro.svg" alt="" />
+                </div>
+                <div class="plan-details">
+                  <div class="plan-name">Pro</div>
+                  <div class="plan-price">$15/mo</div>
+                  <div class="promo hide">2 months free</div>
+                </div>
+              </div>
+
+              <div class="plan-option">
+                <div class="option-text selected">Monthly</div>
+                <label class="option-checkbox">
+                  <input type="checkbox" id="checkbox" />
+                  <div class="slider round"></div>
+                </label>
+                <div class="option-text">Yearly</div>
+              </div>
+            </div>
+            <div class="add-ons page-three page">
+              <div class="add-ons-text-container text-container">
+                <h2 class="add-ons-title title">Pick add-ons</h2>
+                <h3 class="add-ons-text info-text">
+                  Add ons help enhance your gaming experience.
+                </h3>
+              </div>
+              <div class="add-ons-list active">
+                <div class="plan-check">
+                  <input
+                    type="checkbox"
+                    name="add-ons-checkbox"
+                    id="add-ons-checkbox"
+                    checked
+                  />
+                </div>
+                <div class="add-ons-details">
+                  <div class="add-ons-name">Online Service</div>
+                  <div class="add-ons-info">Access to multiplayer games</div>
+                </div>
+                <div class="add-ons-price">+$1/mo</div>
+              </div>
+
+              <div class="add-ons-list active">
+                <div class="plan-check">
+                  <input
+                    type="checkbox"
+                    name="add-ons-checkbox"
+                    id="add-ons-checkbox"
+                    checked
+                  />
+                </div>
+                <div class="add-ons-details">
+                  <div class="add-ons-name">Larger storage</div>
+                  <div class="add-ons-info">Extra 1TB of cloud save</div>
+                </div>
+                <div class="add-ons-price">+$2/mo</div>
+              </div>
+
+              <div class="add-ons-list">
+                <div class="plan-check">
+                  <input
+                    type="checkbox"
+                    name="add-ons-checkbox"
+                    id="add-ons-checkbox"
+                  />
+                </div>
+                <div class="add-ons-details">
+                  <div class="add-ons-name">Customizable profile</div>
+                  <div class="add-ons-info">Custom theme on your profile</div>
+                </div>
+                <div class="add-ons-price">+$2/mo</div>
               </div>
             </div>
           </div>
 
-          <button class="next-step">Next Step</button>
+          <div class="next-step-btn-container">
+            <button class="go-back">Go Back</button>
+            <button class="next-step">Next Step</button>
+          </div>
         </div>
       </div>
     </main>
