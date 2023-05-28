@@ -330,6 +330,30 @@ main {
   font-size: 0.7rem;
   color: red;
 }
+
+.thankyou-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.thankyou-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--Marine-blue);
+}
+
+.thankyou-container img {
+  width: 3rem;
+}
+
+.thankyou-text {
+  text-align: center;
+  color: var(--Cool-gray);
+  line-height: 1.6rem;
+}
 /*CHECKBOX*/
 .option-checkbox {
   position: relative;

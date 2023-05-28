@@ -2,6 +2,7 @@ var pageOne = document.querySelector(".page-one");
 var pageTwo = document.querySelector(".page-two");
 var pageThree = document.querySelector(".page-three");
 var pageFour = document.querySelector(".page-four");
+var pageFive = document.querySelector(".page-five");
 var stepsContainer = document.querySelector(".steps-container").children;
 var checkbox = document.getElementById("checkbox");
 var orderAddOnsBox = document.querySelector(".order-add-ons");
@@ -86,6 +87,11 @@ function validateForm(e) {
     createAddOns();
     changeChosenPlan();
     computeTotal();
+  } else if (currentStep == steps.stepFour) {
+    pageFour.classList.add("hide");
+    pageFive.classList.remove("hide");
+    nextStepBtn.style.display = "none";
+    goBackBtn.style.display = "none";
   }
 }
 
