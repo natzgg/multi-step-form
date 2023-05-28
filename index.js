@@ -4,6 +4,8 @@ var pageThree = document.querySelector(".page-three");
 var pageFour = document.querySelector(".page-four");
 var stepsContainer = document.querySelector(".steps-container").children;
 var checkbox = document.getElementById("checkbox");
+var orderAddOnsBox = document.querySelector(".order-add-ons");
+var chosenPlan = document.querySelector(".chosen-plan-text");
 
 var nextStepBtn = document.querySelector(".next-step");
 var goBackBtn = document.querySelector(".go-back");
@@ -34,6 +36,8 @@ var currentState = {
   planToggle: false,
   selectedPlan: "Arcade",
 };
+
+var selectedAddOns = [];
 
 var currentStep = 1;
 
@@ -79,6 +83,9 @@ function validateForm(e) {
     pageThree.classList.add("hide");
     pageFour.classList.remove("hide");
     changeActiveStep("next", currentStep);
+    createAddOns();
+    changeChosenPlan();
+    computeTotal();
   }
 }
 
@@ -93,6 +100,7 @@ function goBack(e) {
   } else if (currentStep == steps.stepFour) {
     pageFour.classList.add("hide");
     pageThree.classList.remove("hide");
+    resetPageFour();
   }
   changeActiveStep("back", currentStep);
 
@@ -240,7 +248,7 @@ function toggleActivePlan(e) {
 
 function toggleActiveAddOn(e) {
   e.currentTarget.classList.toggle("active");
-  console.log(e.currentTarget.querySelector(".add-ons-name"));
+  // console.log(e.currentTarget.querySelector(".add-ons-name"));
 
   e.currentTarget.children[0].children[0].checked =
     !e.currentTarget.children[0].children[0].checked;
@@ -249,10 +257,74 @@ function toggleActiveAddOn(e) {
     e.target.checked = !e.target.checked;
   }
 
-  addOnsList.forEach((addOn) => {
-    if (addOn.classList.contains("active")) {
-      console.log(addOn.querySelector(".add-ons-name").textContent);
+  updateAddOns(e);
+}
+
+function updateAddOns(e) {
+  let addOn = e.currentTarget;
+  if (addOn.classList.contains("active")) {
+    if (
+      selectedAddOns.indexOf(
+        addOn.querySelector(".add-ons-name").textContent
+      ) == -1
+    ) {
+      selectedAddOns.push(addOn.querySelector(".add-ons-name").textContent);
     }
+  }
+
+  if (!addOn.classList.contains("active")) {
+    if (
+      selectedAddOns.indexOf(
+        addOn.querySelector(".add-ons-name").textContent >= 0
+      )
+    ) {
+      selectedAddOns.splice(
+        selectedAddOns.indexOf(
+          addOn.querySelector(".add-ons-name").textContent
+        ),
+        1
+      );
+    }
+  }
+
+  console.log(selectedAddOns);
+}
+
+function createAddOns() {
+  selectedAddOns.forEach((selected) => {
+    let addOn = document.createElement("div");
+    let addOnName = document.createElement("div");
+    let addOnPrice = document.createElement("div");
+
+    addOn.className = "add-ons-item";
+    addOnName.className = "name";
+    addOnName.textContent = selected;
+    addOnPrice.className = "price";
+
+    if (selected == "Online service") {
+      if (!currentState.planToggle) {
+        addOnPrice.textContent = "+$1/mo";
+      } else {
+        addOnPrice.textContent = "+$10/yr";
+      }
+    } else if (selected == "Larger storage") {
+      if (!currentState.planToggle) {
+        addOnPrice.textContent = "+$2/mo";
+      } else {
+        addOnPrice.textContent = "+$20/yr";
+      }
+    } else if (selected == "Customizable profile") {
+      if (!currentState.planToggle) {
+        addOnPrice.textContent = "+$2/mo";
+      } else {
+        addOnPrice.textContent = "+$20/yr";
+      }
+    }
+
+    addOn.appendChild(addOnName);
+    addOn.appendChild(addOnPrice);
+
+    orderAddOnsBox.appendChild(addOn);
   });
 }
 
@@ -267,5 +339,61 @@ function changeActiveStep(direction, step) {
     stepsContainer.item(step - 1).classList.remove("step-active");
     stepsContainer.item(step - 2).classList.add("step-active");
     currentStep = step - 1;
+  }
+}
+
+function resetPageFour() {
+  orderAddOnsBox.innerHTML = "";
+}
+
+function changeChosenPlan() {
+  chosenPlan.textContent = currentState.selectedPlan;
+
+  if (currentState.selectedPlan == "Arcade") {
+    if (!currentState.planToggle) {
+      document.querySelector(".order-plan-price").textContent = "$9/mo";
+    } else {
+      document.querySelector(".order-plan-price").textContent = "$90/yr";
+    }
+  } else if (currentState.selectedPlan == "Advanced") {
+    if (!currentState.planToggle) {
+      document.querySelector(".order-plan-price").textContent = "$12/mo";
+    } else {
+      document.querySelector(".order-plan-price").textContent = "$120/yr";
+    }
+  } else if (currentState.selectedPlan == "Pro") {
+    if (!currentState.planToggle) {
+      document.querySelector(".order-plan-price").textContent = "$15/mo";
+    } else {
+      document.querySelector(".order-plan-price").textContent = "$150/yr";
+    }
+  }
+}
+
+function computeTotal() {
+  let num = [];
+
+  let a = document.querySelector(".order-plan-price").textContent;
+  a = a.replace(/[^0-9]+/g, "");
+  num.push(a);
+
+  if (document.querySelector(".add-ons-item") != null) {
+    document.querySelectorAll(".price").forEach((price) => {
+      let b = price.textContent;
+      b = b.replace(/[^0-9]+/g, "");
+      num.push(b);
+    });
+  }
+  console.log(num);
+  var total = num.reduce((accumulator, currentValue) => {
+    return Number(accumulator) + Number(currentValue);
+  }, 0);
+
+  if (!currentState.planToggle) {
+    document.querySelector(".order-total-price").textContent =
+      "$" + total + "/mo";
+  } else {
+    document.querySelector(".order-total-price").textContent =
+      "$" + total + "/yr";
   }
 }
