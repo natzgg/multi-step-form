@@ -46,6 +46,8 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .steps-container {
@@ -94,6 +96,7 @@ main {
   gap: 1rem;
   padding: 2rem 1.5rem;
   animation: fadeIn ease 1s;
+  max-width: 40rem;
 }
 
 .text-container {
@@ -462,5 +465,12 @@ input:checked + .slider:before {
   }
   100% {
     opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 353px) {
+  .row input::placeholder {
+    font-size: 0.8rem;
   }
 }
