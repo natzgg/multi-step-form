@@ -109,8 +109,6 @@ function goBack(e) {
     resetPageFour();
   }
   changeActiveStep("back", currentStep);
-
-  console.log("currentStep", currentStep);
 }
 
 function checkEmail(email) {
@@ -175,8 +173,6 @@ function showError(target) {
 }
 
 function setPlan(e) {
-  console.log(currentState.planToggle);
-
   if (!currentState.planToggle) {
     planPrice.forEach((price, index) => {
       if (index == 0) {
@@ -198,10 +194,8 @@ function setPlan(e) {
       if (index == 0) {
         price.textContent = "$9/mo";
       } else if (index == 1) {
-        console.log("taeee");
         price.textContent = "$12/mo";
       } else if (index == 2) {
-        console.log("tite");
         price.textContent = "$15/mo";
       }
     });
@@ -248,13 +242,10 @@ function toggleActivePlan(e) {
   e.currentTarget.classList.toggle("active");
   currentState.selectedPlan =
     e.currentTarget.children[1].children[0].textContent;
-
-  console.log(currentState.selectedPlan);
 }
 
 function toggleActiveAddOn(e) {
   e.currentTarget.classList.toggle("active");
-  // console.log(e.currentTarget.querySelector(".add-ons-name"));
 
   e.currentTarget.children[0].children[0].checked =
     !e.currentTarget.children[0].children[0].checked;
@@ -292,8 +283,6 @@ function updateAddOns(e) {
       );
     }
   }
-
-  console.log(selectedAddOns);
 }
 
 function createAddOns() {
@@ -340,8 +329,6 @@ function changeActiveStep(direction, step) {
     stepsContainer.item(step).classList.add("step-active");
     currentStep = step + 1;
   } else if (direction == "back") {
-    console.log("AFTER FUNCTION: ", currentStep);
-    console.log("DIRECTION", direction);
     stepsContainer.item(step - 1).classList.remove("step-active");
     stepsContainer.item(step - 2).classList.add("step-active");
     currentStep = step - 1;
@@ -390,7 +377,7 @@ function computeTotal() {
       num.push(b);
     });
   }
-  console.log(num);
+
   var total = num.reduce((accumulator, currentValue) => {
     return Number(accumulator) + Number(currentValue);
   }, 0);
